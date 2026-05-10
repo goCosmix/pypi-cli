@@ -2,27 +2,31 @@
 
 Standalone PyPI publishing tool for Ernie's projects.
 
-## Setup
+## Install
 
 ```bash
-python publish.py setup
+python -m pip install -e .
 ```
 
 ## Usage
 
+```bash
+pypi --help
+```
+
 ### Publish existing build
 ```bash
-python publish.py publish /path/to/project
+pypi publish /path/to/project
 ```
 
 ### Build and publish
 ```bash
-python publish.py build-publish /path/to/project
+pypi build-publish /path/to/project
 ```
 
 ### Check configuration
 ```bash
-python publish.py check
+pypi check
 ```
 
 ## Token Management
@@ -30,4 +34,27 @@ python publish.py check
 - **Environment Variable**: `export PYPI_TOKEN=...`
 - **Local Config**: Stored in `~/.vscode-ark/internal/pypi-config.json` (chmod 0600)
 
-Priority: env var > local config
+Priority: env var &gt; local config
+
+## GitHub and PyPI Deployment
+
+This repository is ready for GitHub hosting and public PyPI release.
+
+- `pyproject.toml` is configured for packaging.
+- `.github/workflows/ci.yml` runs tests on push/PR.
+- `.github/workflows/publish.yml` publishes tagged releases to PyPI.
+
+### Publish on GitHub
+
+Create a public repository for this package and push the code.
+
+### Publish on PyPI
+
+Add `PYPI_API_TOKEN` as a GitHub secret, then create a version tag like `v1.0.0` and push it.
+
+You can also publish locally with:
+
+```bash
+pypi setup
+pypi build-publish .
+```

@@ -8,6 +8,7 @@ version = "1.0.0"
 description = "Internal PyPI publishing CLI with secure token management"
 readme = "README.md"
 requires-python = ">=3.8"
+license = "MIT"
 authors = [
     {name = "Ernie Butcher", email = "ernie@fiosii.com"},
 ]
